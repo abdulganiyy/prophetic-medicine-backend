@@ -1,6 +1,7 @@
 const express = require("express");
 const request = require("request");
 const cors = require("cors");
+require("dot-env").config();
 
 const app = express();
 
@@ -49,7 +50,6 @@ app.post("/signup", (req, res) => {
       if (err) {
         res.send("Please re enter your email");
       } else {
-        console.log(response);
         res.send("you have been added to the freebies list");
       }
     });
