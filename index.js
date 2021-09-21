@@ -1,8 +1,10 @@
 const express = require("express");
-const fetch = require("node-fetch");
 const request = require("request");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 // Bodyparser Middleware
 app.use(express.json());
@@ -24,8 +26,8 @@ app.post("/signup", (req, res) => {
         email_address: email,
         status: "subscribed",
         merge_fields: {
-          FNAME: firstName,
-          LNAME: lastName,
+          FNAME: "Balogun",
+          LNAME: "Opeoluwa",
         },
       },
     ],
@@ -37,7 +39,7 @@ app.post("/signup", (req, res) => {
     url: "https://us14.api.mailchimp.com/3.0/lists/eb07920e1e",
     method: "POST",
     headers: {
-      Authorization: "auth 9ef41ebc85e7dcb3db0940f67b4fe7a1-us14",
+      Authorization: "auth " + process.env.MAILCHIMP_KEY,
     },
     body: postData,
   };
