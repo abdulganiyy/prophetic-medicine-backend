@@ -1,7 +1,7 @@
 const express = require("express");
 const request = require("request");
 const cors = require("cors");
-require("dot-env").config();
+require("dotenv").config();
 
 const app = express();
 
